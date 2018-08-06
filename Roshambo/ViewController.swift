@@ -20,6 +20,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func rockButtonClicked(_ sender: Any) {
+        let controller : AnswerViewController
+        
+        controller = storyboard?.instantiateViewController(withIdentifier: "AnswerViewController") as! AnswerViewController
+        
+        controller.usersChoice = 0
+        present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func paperButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "choosePaper", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! AnswerViewController
+        controller.usersChoice = 1
+    }
 }
 
